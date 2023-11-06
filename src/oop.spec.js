@@ -83,5 +83,11 @@ describe('ООП', () => {
             assert.strictEqual(queue.pop(), -2);
             assert.strictEqual(queue.size, 2);
         });
+
+        it('методы работают корректно ', () => {
+            const queue = new core.Queue([1,-2,3,5]);
+           // TODO: ваши тесты
+            assert.strictEqual(true, true);
+        });
     });
 });
