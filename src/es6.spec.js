@@ -39,9 +39,56 @@ describe('es6', () => {
     describe('#Dictionary', () => {
         it('экземпляр класса создается', () => {
             const dic = new core.Dictionary();
-
-            // TODO
             assert.strictEqual(!!dic, true);
         });
+        it('попытка добавить некорректный ключ', () => {
+            const dic = new core.Dictionary();
+            assert.throws(() => {
+                dic.addWord(0, 'роутер');
+            }, Error);
+
+        });
+        it('попытка добавить некорректное значение', () => {
+            const dic = new core.Dictionary();
+            assert.throws(() => {
+                dic.addWord('роутер', 0);
+            }, Error);
+
+        });
+        it('попытка добавить некорректный ключ и значение', () => {
+            const dic = new core.Dictionary();
+            assert.throws(() => {
+                dic.addWord(0, 0);
+            }, Error);
+
+        });
+        it('Добавление слова', () => {
+            const dic = new core.Dictionary();
+            assert.strictEqual(dic.addWord('роутер', 'router'), 0);
+            
+        });
+        it('Получение значения слова, которое есть в словаре', () => {
+            const dic = new core.Dictionary();
+            dic.addWord('роутер', 'router');
+            assert.strictEqual(dic.getWord('роутер'), 'router');
+
+        });
+        it('Получение значения слова, которого нет в словаре', () => {
+            const dic = new core.Dictionary();
+            assert.strictEqual(dic.getWord('router'), undefined);
+
+        });
+        it('Удаление слова, которое есть в словаре', () => {
+            const dic = new core.Dictionary();
+            dic.addWord('роутер', 'router');
+            assert.strictEqual(dic.delWord('router'), undefined);
+
+        });
+        it('Получение значения слова, которого нет в словаре', () => {
+            const dic = new core.Dictionary();
+            assert.strictEqual(dic.getWord('router'), undefined);
+
+        });
     });
+
 });
